@@ -44,9 +44,9 @@ public class SecurityConfiguration {
                 .sessionManagement(e -> e.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED).permitAll()
-                        .requestMatchers(ENDPOINTS_WITH_AUTHENTICATION_REQUIRED).authenticated()
-                        .requestMatchers(ENDPOINTS_USER).hasRole("USER")
-                        .requestMatchers(ENDPOINTS_ADMIN).hasRole("ADMIN")
+//                        .requestMatchers(ENDPOINTS_WITH_AUTHENTICATION_REQUIRED).authenticated()
+//                        .requestMatchers(ENDPOINTS_USER).hasRole("USER")
+//                        .requestMatchers(ENDPOINTS_ADMIN).hasRole("ADMIN")
                         .anyRequest().denyAll())
                 .addFilterBefore(userAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

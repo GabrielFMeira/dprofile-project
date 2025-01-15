@@ -1,7 +1,6 @@
 package br.com.project.dprofile.entity;
 
 import br.com.project.dprofile.service.JsonbConverter;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
@@ -38,9 +37,9 @@ public class User {
 
     private String password;
 
-    @Column(name = "data", columnDefinition = "jsonb")
-    @Convert(converter = JsonbConverter.class)
-    private UserData data;
+//    @Column(name = "data", columnDefinition = "json")
+//    @Convert(converter = JsonbConverter.class)
+//    private UserData data;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(name = "users_roles",
