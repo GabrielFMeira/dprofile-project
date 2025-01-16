@@ -6,9 +6,10 @@ public record DataUserDTO(
         String name,
         LocalDate birthDate,
         String occupation,
-        String decription,
+        String description,
         boolean isGraduated,
         String githubLink,
-        String linkedinLink
+        String linkedinLink,
+        String email
 ) {
 }

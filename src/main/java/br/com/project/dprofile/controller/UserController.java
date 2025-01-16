@@ -4,7 +4,10 @@ import br.com.project.dprofile.dto.DataUserDTO;
 import br.com.project.dprofile.dto.LoginUserDTO;
 import br.com.project.dprofile.dto.RecoveryJwtTokenDTO;
 import br.com.project.dprofile.dto.UserDTO;
+import br.com.project.dprofile.service.JwtTokenService;
+import br.com.project.dprofile.service.UserDataService;
 import br.com.project.dprofile.service.UserService;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +18,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/users")
+@Data
 public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserDataService userDataService;
+
+    @Autowired
+    private final JwtTokenService jwtTokenService;
 
     @PostMapping
     public ResponseEntity<?> create (@RequestBody UserDTO user) {
@@ -32,9 +42,9 @@ public class UserController {
         return new ResponseEntity<>(token, HttpStatus.OK);
     }
 
-//    @PostMapping("/data")
-//    public ResponseEntity<?> finishRegistration(@RequestBody DataUserDTO dataUserDTO) {
-//        userService.registerUserData(dataUserDTO);
-//        return new ResponseEntity<>(HttpStatus.CREATED);
-//    }
+    @PostMapping("/data")
+    public ResponseEntity<?> finishRegistration(@RequestBody DataUserDTO dataUserDTO) {
+        userDataService.save(dataUserDTO);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
 }

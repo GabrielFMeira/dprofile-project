@@ -1,6 +1,4 @@
 package br.com.project.dprofile.service;
-
-import br.com.project.dprofile.entity.User;
 import br.com.project.dprofile.entity.UserDetailsImpl;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -50,10 +48,10 @@ public class JwtTokenServiceImpl implements JwtTokenService{
         }
     }
 
-    @Override
-    public UserDetails getUserByToken() {
-        return (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    }
+//    @Override
+//    public UserDetails getUserByToken() {
+//        return (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//    }
 
     private Instant creationDate() {
         return ZonedDateTime.now(ZoneId.of("America/Sao_Paulo")).toInstant();

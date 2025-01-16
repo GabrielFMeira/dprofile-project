@@ -2,6 +2,12 @@ spring:
   application:
     name: dprofile
 
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dprofiledev
+    username: postgres
+    password: mydatabase
+    driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
       ddl-auto: update

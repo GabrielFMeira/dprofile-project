@@ -31,19 +31,14 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public RecoveryJwtTokenDTO authenticateUser(LoginUserDTO loginUserDTO) {
-        try {
-            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
-                    new UsernamePasswordAuthenticationToken(loginUserDTO.email(), loginUserDTO.password());
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
+                new UsernamePasswordAuthenticationToken(loginUserDTO.email(), loginUserDTO.password());
 
-            Authentication authentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
+        Authentication authentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
 
-            UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 
-            return new RecoveryJwtTokenDTO(jwtTokenService.generateToken(userDetails));
-        } catch (Throwable e) {
-            System.out.println(e);
-            return null;
-        }
+        return new RecoveryJwtTokenDTO(jwtTokenService.generateToken(userDetails));
     }
 
     @Override
@@ -51,7 +46,6 @@ public class UserServiceImpl implements UserService{
         User user = User.builder()
                 .email(userDTO.email())
                 .password(securityConfiguration.passwordEncoder().encode(userDTO.password()))
-                //.data(userDTO.data())
                 .roles(List.of(Role.builder().name(userDTO.role()).build()))
                 .build();
 
@@ -60,10 +54,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void registerUserData(DataUserDTO data) {
-        var currentUser = jwtTokenService.getUserByToken();
 
-        //terminar lógica para cadastrar as infos através do user
-
-        System.out.println(currentUser);
     }
 }
