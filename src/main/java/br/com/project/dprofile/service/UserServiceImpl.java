@@ -1,6 +1,7 @@
 package br.com.project.dprofile.service;
 
 import br.com.project.dprofile.config.SecurityConfiguration;
+import br.com.project.dprofile.dto.DataUserDTO;
 import br.com.project.dprofile.dto.LoginUserDTO;
 import br.com.project.dprofile.dto.RecoveryJwtTokenDTO;
 import br.com.project.dprofile.dto.UserDTO;
@@ -55,5 +56,14 @@ public class UserServiceImpl implements UserService{
                 .build();
 
         userRepository.save(user);
+    }
+
+    @Override
+    public void registerUserData(DataUserDTO data) {
+        var currentUser = jwtTokenService.getUserByToken();
+
+        //terminar lógica para cadastrar as infos através do user
+
+        System.out.println(currentUser);
     }
 }

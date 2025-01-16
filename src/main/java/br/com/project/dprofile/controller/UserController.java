@@ -1,5 +1,6 @@
 package br.com.project.dprofile.controller;
 
+import br.com.project.dprofile.dto.DataUserDTO;
 import br.com.project.dprofile.dto.LoginUserDTO;
 import br.com.project.dprofile.dto.RecoveryJwtTokenDTO;
 import br.com.project.dprofile.dto.UserDTO;
@@ -30,4 +31,10 @@ public class UserController {
         RecoveryJwtTokenDTO token = userService.authenticateUser(loginUserDTO);
         return new ResponseEntity<>(token, HttpStatus.OK);
     }
+
+//    @PostMapping("/data")
+//    public ResponseEntity<?> finishRegistration(@RequestBody DataUserDTO dataUserDTO) {
+//        userService.registerUserData(dataUserDTO);
+//        return new ResponseEntity<>(HttpStatus.CREATED);
+//    }
 }

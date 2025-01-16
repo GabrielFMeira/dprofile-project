@@ -1,9 +1,7 @@
 package br.com.project.dprofile.entity;
 
-import br.com.project.dprofile.service.JsonbConverter;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -12,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,9 +36,8 @@ public class User {
 
     private String password;
 
-//    @Column(name = "data", columnDefinition = "json")
-//    @Convert(converter = JsonbConverter.class)
-//    private UserData data;
+    @OneToOne(mappedBy = "user")
+    private UserData data;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(name = "users_roles",
