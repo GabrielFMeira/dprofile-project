@@ -2,6 +2,10 @@ spring:
   application:
     name: dprofile
 
+  logging:
+    level:
+      org.springframework.security: DEBUG
+
   datasource:
     url: jdbc:postgresql://localhost:5432/dprofiledev
     username: postgres
@@ -15,6 +19,9 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
-  logging:
-    level:
-      org.springframework.security: DEBUG
+  flyway:
+    schemas: public
+    baseline-on-migrate: true
+    baseline-description: Dprofile Project
+    locations: classpath:db/migration/default
+    continue-on-fail: false
