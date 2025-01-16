@@ -19,7 +19,7 @@ public class ProjectController {
 
     private final ProjectService projectService;
 
-    @PostMapping("/upload/{userId}")
+    @PostMapping("/upload")
     public ResponseEntity<?> upload(@RequestParam MultipartFile file, @RequestParam(name = "userId") Long userId) {
         try {
             projectService.processArchive(file, userId);

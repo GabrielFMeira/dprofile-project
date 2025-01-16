@@ -27,7 +27,7 @@ public class SecurityConfiguration {
 
     public static final String [] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {
             "/users/data",
-            "/projects/upload/{userId}"
+            "/projects/upload"
     };
 
     public static final String [] ENDPOINTS_USER = {
